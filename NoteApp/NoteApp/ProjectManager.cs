@@ -17,7 +17,8 @@ namespace NoteApp
         /// <summary>
         /// Путь к папке с файлом
         /// </summary>
-        private static string FolderPath { get; } = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\NoteApp\";
+        private static string FolderPath { get; } = 
+            $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\NoteApp\";
 
         /// <summary>
         /// Название файла
@@ -40,10 +41,11 @@ namespace NoteApp
                 File.Create(FileName);
             }
 
-            using (StreamWriter sw = new StreamWriter(FolderPath + FileName))
-            using (JsonWriter jr = new JsonTextWriter(sw))
+            using (StreamWriter streamwriter = new StreamWriter(FolderPath + FileName))
+            using (JsonWriter jsonwriter = new JsonTextWriter(streamwriter))
             {
-                new JsonSerializer().Serialize(jr, project);
+                var serializer = new JsonSerializer();
+                serializer.Serialize(jsonwriter, project);
             }
         }
 
@@ -65,14 +67,14 @@ namespace NoteApp
 
             try
             {
-                using (StreamReader sr = new StreamReader(FolderPath + FileName))
+                using (StreamReader streamreader = new StreamReader(FolderPath + FileName))
                 {
-                    using (JsonReader jr = new JsonTextReader(sr))
+                    using (JsonReader jsonreader = new JsonTextReader(streamreader))
                     {
-                        JsonSerializer jserializer = new JsonSerializer();
-                        Project proj = jserializer.Deserialize<Project>(jr);
+                        var serializer = new JsonSerializer();
+                        var project = serializer.Deserialize<Project>(jsonreader);
 
-                        return proj ?? new Project();
+                        return project ?? new Project();
                     }
                 }
             }
@@ -80,7 +82,6 @@ namespace NoteApp
             {
                 return new Project();
             }
-
         }
     }
 }

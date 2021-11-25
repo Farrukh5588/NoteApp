@@ -11,7 +11,7 @@ namespace NoteApp
     /// </summary>
     public enum NoteCategory
     {
-        Job = 1,
+        Job,
         Home,
         HealthAndSport,
         People,

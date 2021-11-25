@@ -37,19 +37,20 @@ namespace NoteApp
         /// </summary>
         public string Name
         {
-            get { return _name; }
+            get
+            { 
+                return _name;
+            }
             set
             {
-                if (value.Length <= 50)
-                {
-                    _name = value;
-                }
-                else
+                if (value.Length > 50)
                 {
                     throw new ArgumentException("Введенное значение больше 50 символов!");
                 }
+                _name = value;
             }
         }
+
         /// <summary>
         /// Категория заметки
         /// </summary>
@@ -100,15 +101,6 @@ namespace NoteApp
 
             return Name == other.Name && NoteText == other.NoteText && NoteCategory == other.NoteCategory &&
                 CreationTime == other.CreationTime && LastModifyTime == other.LastModifyTime;
-        }
-
-        /// <summary>
-        /// Отображает заметку в списке только по её заголовку
-        /// </summary>
-        /// <returns>Имя заметки</returns>
-        public override string ToString()
-        {
-            return Name;
         }
     }
 }
