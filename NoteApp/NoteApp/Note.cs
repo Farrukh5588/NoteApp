@@ -16,8 +16,10 @@ namespace NoteApp
         /// </summary>
         private string _name;
 
+        private string _notetext;
+
         /// <summary>
-        /// Конструктор, вызываемый при создании экземпляра класса "Note"
+        /// Конструктор описывающий Заметки
         /// </summary>
         /// <param name="name">Входящий параметр, определяющий заголовок заметки (необяз.)</param>
         /// <param name="noteText">Входящий параметр, определяющий текст заметки (необяз.)</param>
@@ -28,12 +30,12 @@ namespace NoteApp
             NoteText = noteText;
             NoteCategory = noteCategory;
 
-            LastModifyTime = DateTime.Now;
-            CreationTime = LastModifyTime;
+            DateOfLastEdit = DateTime.Now;
+            DateOfCreation = DateTime.Now;
         }
 
         /// <summary>
-        /// Заголовок заметки. Выбрасывает исключение при попытке установить длину заголовка больше 50
+        /// Заголовок заметки
         /// </summary>
         public string Name
         {
@@ -59,17 +61,31 @@ namespace NoteApp
         /// <summary>
         /// Текст заметки
         /// </summary>
-        public string NoteText { get; set; }
+        public string NoteText
+        { 
+            get
+            {
+                return _notetext; 
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Нет значениния содержимого");
+                }
+                _notetext = value;
+            }
+        }
 
         /// <summary>
         /// Время создания заметки
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTime DateOfCreation { get; set; }
 
         /// <summary>
         /// Время последнего изменения заметки
         /// </summary>
-        public DateTime LastModifyTime { get; set; }
+        public DateTime DateOfLastEdit { get; set; }
 
         /// <summary>
         /// Метод, осуществляющий создание копии выбранной заметки
@@ -81,8 +97,8 @@ namespace NoteApp
             {
                 Name = this.Name,
                 NoteText = this.NoteText,
-                CreationTime = this.CreationTime,
-                LastModifyTime = this.LastModifyTime,
+                DateOfCreation = this.DateOfCreation,
+                DateOfLastEdit = this.DateOfLastEdit,
                 NoteCategory = this.NoteCategory
             };
         }
@@ -100,7 +116,7 @@ namespace NoteApp
             }
 
             return Name == other.Name && NoteText == other.NoteText && NoteCategory == other.NoteCategory &&
-                CreationTime == other.CreationTime && LastModifyTime == other.LastModifyTime;
+                DateOfCreation == other.DateOfCreation && DateOfLastEdit == other.DateOfLastEdit;
         }
     }
 }
