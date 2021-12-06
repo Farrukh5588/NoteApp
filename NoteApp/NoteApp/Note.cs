@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace NoteApp
 {
@@ -21,17 +22,22 @@ namespace NoteApp
         /// <summary>
         /// Конструктор описывающий Заметки
         /// </summary>
-        /// <param name="name">Входящий параметр, определяющий заголовок заметки (необяз.)</param>
-        /// <param name="noteText">Входящий параметр, определяющий текст заметки (необяз.)</param>
-        /// <param name="noteCategory">Входящий параметр, определяющий категорию заметки (необяз.)</param>
-        public Note(string name = "Без названия", string noteText = "", NoteCategory noteCategory = NoteCategory.Other)
+        /// <param name="name"></param>
+        /// <param name="noteText"></param>
+        /// <param name="noteCategory"></param>
+        /// <param name="dateOfCreation"></param>
+        /// <param name="dateOfLastEdit"></param>
+        
+        [JsonConstructor]
+        public Note (string name, string noteText, NoteCategory noteCategory, 
+            DateTime dateOfCreation, DateTime dateOfLastEdit)
         {
             Name = name;
             NoteText = noteText;
             NoteCategory = noteCategory;
 
-            DateOfLastEdit = DateTime.Now;
-            DateOfCreation = DateTime.Now;
+            DateOfLastEdit = dateOfLastEdit;
+            DateOfCreation = dateOfCreation;
         }
 
         /// <summary>
@@ -93,14 +99,7 @@ namespace NoteApp
         /// <returns>Новый экземпляр заметки с идентичными параметрами</returns>
         public object Clone()
         {
-            return new Note
-            {
-                Name = this.Name,
-                NoteText = this.NoteText,
-                DateOfCreation = this.DateOfCreation,
-                DateOfLastEdit = this.DateOfLastEdit,
-                NoteCategory = this.NoteCategory
-            };
+            return this.MemberwiseClone();
         }
 
         /// <summary>
