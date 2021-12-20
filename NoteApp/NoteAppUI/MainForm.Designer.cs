@@ -221,7 +221,7 @@ namespace NoteAppUI
             // ShowCategoryLabel
             // 
             this.ShowCategoryLabel.AutoSize = true;
-            this.ShowCategoryLabel.Location = new System.Drawing.Point(2, 9);
+            this.ShowCategoryLabel.Location = new System.Drawing.Point(2, 10);
             this.ShowCategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ShowCategoryLabel.Name = "ShowCategoryLabel";
             this.ShowCategoryLabel.Size = new System.Drawing.Size(79, 13);
@@ -265,7 +265,7 @@ namespace NoteAppUI
             // ModifiedLabel
             // 
             this.ModifiedLabel.AutoSize = true;
-            this.ModifiedLabel.Location = new System.Drawing.Point(152, 56);
+            this.ModifiedLabel.Location = new System.Drawing.Point(152, 55);
             this.ModifiedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ModifiedLabel.Name = "ModifiedLabel";
             this.ModifiedLabel.Size = new System.Drawing.Size(50, 13);
@@ -275,7 +275,7 @@ namespace NoteAppUI
             // CreatedLabel
             // 
             this.CreatedLabel.AutoSize = true;
-            this.CreatedLabel.Location = new System.Drawing.Point(4, 56);
+            this.CreatedLabel.Location = new System.Drawing.Point(4, 55);
             this.CreatedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(47, 13);
