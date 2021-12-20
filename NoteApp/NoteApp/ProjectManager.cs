@@ -17,35 +17,37 @@ namespace NoteApp
         /// <summary>
         /// Путь к папке с файлом
         /// </summary>
-        private static string FolderPath { get; } = 
-            $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\NoteApp\";
-
-        /// <summary>
-        /// Название файла
-        /// </summary>
-        private static string FileName { get; } = "NoteList.json";
+        public static string FolderPath
+        {
+            get
+            {
+                var appDataFolder =
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                var path = appDataFolder + @"\Rakhimov\NoteApp\Note.json";
+                return path;
+            }
+        }
 
         /// <summary>
         /// Сохранение проекта в файл
         /// </summary>
         /// <param name="project">Проект, содержащий список заметок</param>
-        public static void SaveTo(Project project)
+        public static void SaveToFile(Project project, string filePath)
         {
-            if (!Directory.Exists(FolderPath))
+            var directoryFile = Path.GetDirectoryName(filePath);
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryFile);
+            if (!Directory.Exists(directoryFile))
             {
-                Directory.CreateDirectory(FolderPath);
+                directoryInfo.Create();
             }
 
-            if (!File.Exists(FileName))
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(filePath))
             {
-                File.Create(FileName);
-            }
-
-            using (StreamWriter streamwriter = new StreamWriter(FolderPath + FileName))
-            using (JsonWriter jsonwriter = new JsonTextWriter(streamwriter))
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(jsonwriter, project);
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, project);
+                }
             }
         }
 
@@ -53,32 +55,25 @@ namespace NoteApp
         /// Загружает (десериализует) данные из файла JSON
         /// </summary>
         /// <returns>Новый экземпляр класса Project</returns>
-        public static Project LoadFrom()
+        public static Project LoadFromFile(string filename)
         {
-            if (!Directory.Exists(FolderPath))
-            {
-                Directory.CreateDirectory(FolderPath);
-            }
-
-            if (!File.Exists(FileName))
-            {
-                return new Project();
-            }
-
             try
             {
-                using (StreamReader streamreader = new StreamReader(FolderPath + FileName))
+                if (!File.Exists(filename))
                 {
-                    using (JsonReader jsonreader = new JsonTextReader(streamreader))
-                    {
-                        var serializer = new JsonSerializer();
-                        var project = serializer.Deserialize<Project>(jsonreader);
-
-                        return project ?? new Project();
-                    }
+                    Project emptyProject = new Project();
+                    return emptyProject;
                 }
+                var project = new Project();
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamReader sr = new StreamReader(filename))
+                using (JsonReader reader = new JsonTextReader(sr))
+                {
+                    project = serializer.Deserialize<Project>(reader);
+                }
+                return project;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 return new Project();
             }

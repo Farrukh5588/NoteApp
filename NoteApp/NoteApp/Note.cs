@@ -16,7 +16,10 @@ namespace NoteApp
         /// Имя заметки. Взаимодействует с Name
         /// </summary>
         private string _name;
-
+       
+        /// <summary>
+        /// Текст заметки 
+        /// </summary>
         private string _notetext;
 
         /// <summary>
@@ -41,6 +44,14 @@ namespace NoteApp
         }
 
         /// <summary>
+        /// Конструктор класса без параметров
+        /// </summary>
+        public Note()
+        {
+
+        }
+
+        /// <summary>
         /// Заголовок заметки
         /// </summary>
         public string Name
@@ -53,7 +64,7 @@ namespace NoteApp
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("Введенное значение больше 50 символов!");
+                    throw new ArgumentException("The entered value is greater than 50 characters!");
                 }
                 _name = value;
             }
@@ -77,7 +88,7 @@ namespace NoteApp
             {
                 if (value == null)
                 {
-                    throw new ArgumentException("Нет значениния содержимого");
+                    throw new ArgumentException("No content value");
                 }
                 _notetext = value;
             }
