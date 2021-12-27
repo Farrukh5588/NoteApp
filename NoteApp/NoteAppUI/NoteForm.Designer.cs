@@ -35,11 +35,11 @@ namespace NoteAppUI
             this.ModifiedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CreatedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -109,16 +109,16 @@ namespace NoteAppUI
             this.NoteCategoryComboBox.TabIndex = 16;
             this.NoteCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.NoteCategoryComboBox_SelectedIndexChanged);
             // 
-            // TitleTextBox
+            // NameTextBox
             // 
-            this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleTextBox.Location = new System.Drawing.Point(64, 4);
-            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(404, 20);
-            this.TitleTextBox.TabIndex = 15;
-            this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
+            this.NameTextBox.Location = new System.Drawing.Point(64, 4);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(404, 20);
+            this.NameTextBox.TabIndex = 15;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // ModifiedLabel
             // 
@@ -150,15 +150,15 @@ namespace NoteAppUI
             this.CategoryLabel.TabIndex = 12;
             this.CategoryLabel.Text = "Category:";
             // 
-            // TitleLabel
+            // NameLabel
             // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Location = new System.Drawing.Point(8, 7);
-            this.TitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(30, 13);
-            this.TitleLabel.TabIndex = 11;
-            this.TitleLabel.Text = "Title:";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(8, 7);
+            this.NameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(30, 13);
+            this.NameLabel.TabIndex = 11;
+            this.NameLabel.Text = "Title:";
             // 
             // NoteForm
             // 
@@ -171,11 +171,11 @@ namespace NoteAppUI
             this.Controls.Add(this.ModifiedTimePicker);
             this.Controls.Add(this.CreatedTimePicker);
             this.Controls.Add(this.NoteCategoryComboBox);
-            this.Controls.Add(this.TitleTextBox);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.CreatedLabel);
             this.Controls.Add(this.CategoryLabel);
-            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.NameLabel);
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "NoteForm";
             this.ShowIcon = false;
@@ -193,10 +193,10 @@ namespace NoteAppUI
         private System.Windows.Forms.DateTimePicker ModifiedTimePicker;
         private System.Windows.Forms.DateTimePicker CreatedTimePicker;
         private System.Windows.Forms.ComboBox NoteCategoryComboBox;
-        private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.Label CategoryLabel;
-        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label NameLabel;
     }
 }

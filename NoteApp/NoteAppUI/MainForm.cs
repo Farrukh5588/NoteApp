@@ -41,12 +41,12 @@ namespace NoteAppUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
             NoteNameLabel.Text = "";
             CategorySelectedLabel.Text = "";
             _project = ProjectManager.LoadFromFile(ProjectManager.FolderPath);
             FillNoteListBox();
         }
+
         /// <summary>
         /// Метод очищения полей с данными заметки
         /// </summary>
@@ -83,6 +83,7 @@ namespace NoteAppUI
             {
                 return;
             }
+
             var indexNote = NoteListBox.SelectedIndex;
             var selectedData = _project.Notes[indexNote];
             var editNote = new NoteForm();
@@ -109,6 +110,7 @@ namespace NoteAppUI
             {
                 return;
             }
+
             var indexNote = NoteListBox.SelectedIndex;
             var selectedData = _project.Notes[indexNote];
             var dialogResult = MessageBox.Show
@@ -122,6 +124,7 @@ namespace NoteAppUI
             {
                 return;
             }
+
             _project.Notes.RemoveAt(indexNote);
             NoteListBox.Items.RemoveAt(indexNote);
             ProjectManager.SaveToFile(_project, ProjectManager.FolderPath);
@@ -136,6 +139,7 @@ namespace NoteAppUI
                 CategorySelectedLabel.Text = "";
                 return;
             }
+
             int index = NoteListBox.SelectedIndex;
             var note = _project.Notes[index];
             NoteNameLabel.Text = note.Name;

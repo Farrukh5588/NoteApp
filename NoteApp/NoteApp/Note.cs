@@ -64,7 +64,7 @@ namespace NoteApp
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("The entered value is greater than 50 characters!");
+                    throw new ArgumentException("Note name is greater than 50 characters!");
                 }
                 _name = value;
             }

@@ -246,7 +246,7 @@ namespace NoteAppUI
             // 
             this.ModifiedTimePicker.Enabled = false;
             this.ModifiedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ModifiedTimePicker.Location = new System.Drawing.Point(205, 52);
+            this.ModifiedTimePicker.Location = new System.Drawing.Point(206, 61);
             this.ModifiedTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.ModifiedTimePicker.Name = "ModifiedTimePicker";
             this.ModifiedTimePicker.Size = new System.Drawing.Size(82, 20);
@@ -256,7 +256,7 @@ namespace NoteAppUI
             // 
             this.CreatedTimePicker.Enabled = false;
             this.CreatedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CreatedTimePicker.Location = new System.Drawing.Point(56, 52);
+            this.CreatedTimePicker.Location = new System.Drawing.Point(57, 61);
             this.CreatedTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.CreatedTimePicker.Name = "CreatedTimePicker";
             this.CreatedTimePicker.Size = new System.Drawing.Size(81, 20);
@@ -265,7 +265,7 @@ namespace NoteAppUI
             // ModifiedLabel
             // 
             this.ModifiedLabel.AutoSize = true;
-            this.ModifiedLabel.Location = new System.Drawing.Point(152, 55);
+            this.ModifiedLabel.Location = new System.Drawing.Point(153, 64);
             this.ModifiedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ModifiedLabel.Name = "ModifiedLabel";
             this.ModifiedLabel.Size = new System.Drawing.Size(50, 13);
@@ -275,7 +275,7 @@ namespace NoteAppUI
             // CreatedLabel
             // 
             this.CreatedLabel.AutoSize = true;
-            this.CreatedLabel.Location = new System.Drawing.Point(4, 55);
+            this.CreatedLabel.Location = new System.Drawing.Point(5, 64);
             this.CreatedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(47, 13);
@@ -285,7 +285,7 @@ namespace NoteAppUI
             // CategorySelectedLabel
             // 
             this.CategorySelectedLabel.AutoSize = true;
-            this.CategorySelectedLabel.Location = new System.Drawing.Point(60, 36);
+            this.CategorySelectedLabel.Location = new System.Drawing.Point(61, 45);
             this.CategorySelectedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CategorySelectedLabel.Name = "CategorySelectedLabel";
             this.CategorySelectedLabel.Size = new System.Drawing.Size(117, 13);
@@ -295,7 +295,7 @@ namespace NoteAppUI
             // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(4, 36);
+            this.CategoryLabel.Location = new System.Drawing.Point(5, 45);
             this.CategoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(52, 13);
@@ -306,7 +306,7 @@ namespace NoteAppUI
             // 
             this.NoteNameLabel.AutoSize = true;
             this.NoteNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NoteNameLabel.Location = new System.Drawing.Point(3, 8);
+            this.NoteNameLabel.Location = new System.Drawing.Point(6, 8);
             this.NoteNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NoteNameLabel.Name = "NoteNameLabel";
             this.NoteNameLabel.Size = new System.Drawing.Size(166, 25);
@@ -318,13 +318,13 @@ namespace NoteAppUI
             this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteTextBox.Location = new System.Drawing.Point(8, 79);
+            this.NoteTextBox.Location = new System.Drawing.Point(8, 89);
             this.NoteTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
             this.NoteTextBox.ReadOnly = true;
             this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NoteTextBox.Size = new System.Drawing.Size(420, 328);
+            this.NoteTextBox.Size = new System.Drawing.Size(420, 318);
             this.NoteTextBox.TabIndex = 8;
             // 
             // MainForm

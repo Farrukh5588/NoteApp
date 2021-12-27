@@ -50,7 +50,7 @@ namespace NoteAppUI
                 _note = (Note)value.Clone();
                 if (_note != null)
                 {
-                    TitleTextBox.Text = _note.Name;
+                    NameTextBox.Text = _note.Name;
                     NoteCategoryComboBox.SelectedItem = _note.NoteCategory;
                     CreatedTimePicker.Value = _note.DateOfCreation;
                     ModifiedTimePicker.Value = _note.DateOfLastEdit;
@@ -58,8 +58,8 @@ namespace NoteAppUI
                 }
                 else
                 {
-                    TitleTextBox.Text = "Untitled";
-                    _note.Name = TitleTextBox.Text;
+                    NameTextBox.Text = "Unnamed";
+                    _note.Name = NameTextBox.Text;
                     CreatedTimePicker.Value = DateTime.Now;
                     ModifiedTimePicker.Value = DateTime.Now;
                 }
@@ -75,7 +75,7 @@ namespace NoteAppUI
         {
             try
             {
-                _note.Name = TitleTextBox.Text;
+                _note.Name = NameTextBox.Text;
                 _note.NoteCategory = (NoteCategory)NoteCategoryComboBox.SelectedItem;
                 _note.DateOfCreation = CreatedTimePicker.Value;
                 _note.DateOfLastEdit = ModifiedTimePicker.Value;
@@ -87,8 +87,8 @@ namespace NoteAppUI
             {
                 DialogResult result = MessageBox.Show
                 (
-                "Note name is too large: more than 50 characters",
-                "Error",
+                text:exception.Message,
+                caption:"Error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
                 );
@@ -101,16 +101,17 @@ namespace NoteAppUI
             Close();
         }
 
-        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                Note.Name = TitleTextBox.Text;
-                TitleTextBox.BackColor = _correctInputColor;
+                Note.Name = NameTextBox.Text;
+                NameTextBox.BackColor = _correctInputColor;
             }
+
             catch (ArgumentException exception)
             {
-                TitleTextBox.BackColor = _incorrectInputColor;
+                NameTextBox.BackColor = _incorrectInputColor;
             }
         }
     }
