@@ -23,7 +23,7 @@ namespace NoteApp
             {
                 var appDataFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                var path = appDataFolder + @"\Rakhimov\NoteApp\Note.json";
+                var path = appDataFolder + @"\NoteApp\Note.json";
                 return path;
             }
         }

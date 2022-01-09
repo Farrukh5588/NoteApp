@@ -173,6 +173,7 @@ namespace NoteAppUI
             this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
             this.NoteCategoryComboBox.Size = new System.Drawing.Size(129, 21);
             this.NoteCategoryComboBox.TabIndex = 11;
+            this.NoteCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.NoteCategoryComboBox_SelectedIndexChanged);
             // 
             // RemoveNoteButton
             // 
@@ -241,6 +242,7 @@ namespace NoteAppUI
             this.NoteListBox.Size = new System.Drawing.Size(212, 345);
             this.NoteListBox.TabIndex = 6;
             this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
+            this.NoteListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NoteListBox_KeyUp);
             // 
             // ModifiedTimePicker
             // 

@@ -19,6 +19,11 @@ namespace NoteAppUI
         private Project _project = new Project();
 
         /// <summary>
+		/// Список текущих заметок.
+		/// </summary>
+		private List<Note> currentNotes;
+
+        /// <summary>
         /// Метод заполнения NoteListBox
         /// </summary>
         private void FillNoteListBox()
@@ -32,10 +37,12 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            NoteCategoryComboBox.Items.Add("All");
             _project = ProjectManager.LoadFromFile(ProjectManager.FolderPath);
-            foreach (var item in Enum.GetValues(typeof(NoteCategory)))
+            var listCategory = System.Enum.GetValues(typeof(NoteCategory));
+            foreach (var category in listCategory)
             {
-                NoteCategoryComboBox.Items.Add(item);
+                NoteCategoryComboBox.Items.Add(category);
             }
         }
 
@@ -45,6 +52,8 @@ namespace NoteAppUI
             CategorySelectedLabel.Text = "";
             _project = ProjectManager.LoadFromFile(ProjectManager.FolderPath);
             FillNoteListBox();
+            NoteCategoryComboBox.SelectedIndex = 0;
+            UpdateNoteBox(_project.Notes);
         }
 
         /// <summary>
@@ -57,6 +66,51 @@ namespace NoteAppUI
             NoteTextBox.Clear();
         }
 
+        /// <summary>
+		/// Поиск категории.
+		/// </summary>
+		private void CurrentCategory()
+        {
+            if (NoteCategoryComboBox.SelectedItem.ToString() == "All") 
+            {
+                UpdateNoteBox(_project.Notes);
+            }
+            else
+            {
+                List<Note> findCategory = new List<Note>();
+                var selected = (NoteCategory)NoteCategoryComboBox.SelectedItem;
+                foreach (var note in _project.Notes)
+                {
+                    if (note.NoteCategory == selected)
+                    {
+                        findCategory.Add(note);
+                    }
+                }
+                UpdateNoteBox(findCategory);
+            }
+        }
+
+        /// <summary>
+		/// Обновление списка.
+		/// </summary>
+		private void UpdateNoteBox(List<Note> notes)
+        {
+            NoteListBox.Items.Clear();
+            foreach (var note in notes)
+            {
+                NoteListBox.Items.Add(note.Name);
+            }
+            currentNotes = notes;
+            if (currentNotes.Count - 1 >= _project.CurrentNote)
+            {
+                NoteListBox.SelectedIndex = _project.CurrentNote;
+            }
+            else
+            {
+                NoteListBox.SelectedIndex = -1;
+                _project.CurrentNote = -1;
+            }
+        }
         /// <summary>
         /// Метод добавления заметки
         /// </summary>
@@ -71,6 +125,8 @@ namespace NoteAppUI
                 NoteListBox.Items.Add(newNote.Name);
                 NoteListBox.SelectedIndex = NoteListBox.Items.Count - 1;
                 ProjectManager.SaveToFile(_project, ProjectManager.FolderPath);
+                _project.Notes = _project.SortNotes(_project.Notes);
+                CurrentCategory();
             }
         }
 
@@ -98,6 +154,8 @@ namespace NoteAppUI
                 NoteListBox.Items.Add(updatedNote.Name);
                 NoteListBox.SelectedIndex = NoteListBox.Items.Count - 1;
                 ProjectManager.SaveToFile(_project, ProjectManager.FolderPath);
+                _project.Notes = _project.SortNotes(_project.Notes);
+                CurrentCategory();
             }
         }
 
@@ -129,6 +187,8 @@ namespace NoteAppUI
             NoteListBox.Items.RemoveAt(indexNote);
             ProjectManager.SaveToFile(_project, ProjectManager.FolderPath);
             ClearMainFormData();
+            _project.Notes = _project.SortNotes(_project.Notes);
+            CurrentCategory();
         }
 
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,6 +253,20 @@ namespace NoteAppUI
         {
             var aboutForm = new AboutForm();
             aboutForm.Show();
+        }
+
+        private void NoteCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NoteListBox.SelectedIndex = -1;
+            ClearMainFormData();
+            CurrentCategory();
+        }
+        private void NoteListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteNote();
+            }
         }
     }
 }
