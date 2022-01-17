@@ -12,7 +12,7 @@ namespace NoteApp.UnitTests
     class NoteTest
     {
         [Test]
-        public void Name_GoodName_ReturnsSameName()
+        public void Test_Name_CorrectName_ReturnsSameName()
         {
             //Setup
             var note = new Note();
@@ -28,7 +28,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Text_GoodText_ReturnsSameText()
+        public void Test_Notetext_CorrectNotetext_ReturnsSameNotetext()
         {
             //Setup
             var note = new Note();
@@ -44,7 +44,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Category_GoodCategory_ReturnsSameCategory()
+        public void Test_Notecategory_CorrectNotecategory_ReturnsSameNotecategory()
         {
             //Setup
             var note = new Note();
@@ -60,11 +60,11 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Create_GoodTimeCreate_ReturnsSameDate()
+        public void Test_DateTime_CorrectDateOfCreation_ReturnsSameDateTime()
         {
             //Setup
             var note = new Note();
-            var sourceName = new DateTime(2020, 12, 09);
+            var sourceName = new DateTime(2021, 12, 09);
             var expectedName = sourceName;
 
             //Act
@@ -76,11 +76,11 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Modify_GoodTimeModify_ReturnsSameDate()
+        public void Test_DateTime_CorrectDateLastEdit_ReturnsSameDateTime()
         {
             //Setup
             var note = new Note();
-            var sourceName = new DateTime(2020, 12, 09);
+            var sourceName = new DateTime(2021, 12, 09);
             var expectedName = sourceName;
 
             //Act
@@ -92,7 +92,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Name_BadName_ThrowsException()
+        public void Test_Name_WrongName_ThrowsException()
         {
             //Setup
             var note = new Note();
@@ -110,7 +110,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Clone_GoodClone_ReturnSameData()
+        public void Test_Clone_CorrectClone_ReturnSameDataTime()
         {
             //Setup
             var sourceCategory = NoteCategory.Job;
@@ -120,8 +120,8 @@ namespace NoteApp.UnitTests
                 Name = "Работка",
                 NoteText = "qwertyuiop",
                 NoteCategory = notesCategory,
-                DateOfCreation = new DateTime(2020, 12, 09),
-                DateOfLastEdit = new DateTime(2020, 12, 09)
+                DateOfCreation = new DateTime(2021, 12, 09),
+                DateOfLastEdit = new DateTime(2021, 12, 09)
             };
 
             //Act

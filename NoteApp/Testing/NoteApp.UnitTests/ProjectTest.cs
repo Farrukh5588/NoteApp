@@ -9,7 +9,6 @@ namespace NoteApp.UnitTests
 {
     class ProjectTest
     {
-
         [Test]
         public void Test_SetNotes()
         {

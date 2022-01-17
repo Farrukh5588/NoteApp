@@ -19,22 +19,22 @@ namespace NoteApp.UnitTests
                 Name = "Note",
                 NoteText = "Text",
                 NoteCategory = NoteCategory.Documents,
-                DateOfCreation = new DateTime(2020, 12, 09),
-                DateOfLastEdit = new DateTime(2020, 12, 09)
+                DateOfCreation = new DateTime(2021, 12, 09),
+                DateOfLastEdit = new DateTime(2021, 12, 09)
             });
             sourseProject.Notes.Add(new Note()
             {
-                Name = "Note2",
-                NoteText = "Text2",
+                Name = "qwert",
+                NoteText = "qwerty",
                 NoteCategory = NoteCategory.Job,
-                DateOfCreation = new DateTime(2020, 12, 09),
-                DateOfLastEdit = new DateTime(2020, 12, 09)
+                DateOfCreation = new DateTime(2021, 12, 09),
+                DateOfLastEdit = new DateTime(2021, 12, 09)
             });
             return sourseProject;
         }
 
         [Test]
-        public void SaveToFile_CorrectProject_FileSavedCorrectly()
+        public void Test_SaveToFile_CorrectProject_FileSavedCorrectly()
         {
             // Setup
             var sourceProject = PrepareProject();
@@ -60,7 +60,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void LoadFromFile_CorrectProject_FileLoadedCorrectly()
+        public void Test_LoadFromFile_CorrectProject_FileLoadedCorrectly()
         {
             //Setup
             var expectedProject = PrepareProject();
@@ -83,7 +83,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void LoadFromFile_UnCorrectPath_ReturnEmptyProject()
+        public void Test_LoadFromFile_UnCorrectPath_ReturnEmptyProject()
         {
             //Setup
             var testFileName = Common.DataFolderForTest() + "wrong";
@@ -96,7 +96,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void LoadFromFile_UnCorrectFile_ReturnEmptyProject()
+        public void Test_LoadFromFile_UnCorrectFile_ReturnEmptyProject()
         {
             //Setup
             var testDataFolder = Common.DataFolderForTest();
@@ -110,7 +110,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void FilePath_GoodFilePath_ReturnSamePath()
+        public void Test_FilePath_GoodFilePath_ReturnSamePath()
         {
             //Setup
             var expectedPath = Common.FilePath();
