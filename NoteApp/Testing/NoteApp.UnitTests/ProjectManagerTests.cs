@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using System.IO;
 
 namespace NoteApp.UnitTests
 {
-    class ProjectManagerTest
+    public class ProjectManagerTests
     {
 
         public Project PrepareProject()
@@ -47,7 +43,6 @@ namespace NoteApp.UnitTests
             }
 
             // Act
-            ProjectManager.SaveToFile(sourceProject, expectedFileName);
             ProjectManager.SaveToFile(sourceProject, actualFileName);
 
             var isFileExist = File.Exists(actualFileName);
@@ -100,7 +95,7 @@ namespace NoteApp.UnitTests
         {
             //Setup
             var testDataFolder = Common.DataFolderForTest();
-            var testFileName = testDataFolder + @"\defectiveProject.json";
+            var testFileName = testDataFolder + @"\wrongFile.json";
 
             //Act
             var actualProject = ProjectManager.LoadFromFile(testFileName);
@@ -114,6 +109,7 @@ namespace NoteApp.UnitTests
         {
             //Setup
             var expectedPath = Common.FilePath();
+
             //Act
             var actualPath = ProjectManager.FolderPath;
 

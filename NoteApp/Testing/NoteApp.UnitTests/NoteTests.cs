@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using Newtonsoft.Json;
-
 
 namespace NoteApp.UnitTests
 {
-    class NoteTest
+    public class NoteTests
     {
         [Test]
         public void Test_Name_CorrectName_ReturnsSameName()
@@ -126,11 +120,9 @@ namespace NoteApp.UnitTests
 
             //Act
             var actualNote = expectedNote.Clone() as Note;
-            var expected = JsonConvert.SerializeObject(expectedNote);
-            var actual = JsonConvert.SerializeObject(actualNote);
-
+           
             //Assert
-            NUnit.Framework.Assert.AreEqual(expected, actual);
+            NUnit.Framework.Assert.AreEqual(expectedNote, actualNote);
         }
     }
 }

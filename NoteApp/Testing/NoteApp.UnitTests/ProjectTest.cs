@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace NoteApp.UnitTests
 {
-    class ProjectTest
+    public class ProjectTest
     {
         [Test]
-        public void Test_SetNotes()
+        public void Test_Project_CreateProject_ReturnRegulatedProject()
         {
-            var expected = new List<Note>();
-            var actual = expected;
+            //Setup
+            var note = new Note()
+            {
+                Name = "Note",
+                NoteText = "Text",
+                NoteCategory = NoteCategory.Documents,
+                DateOfCreation = new DateTime(2021, 12, 09),
+                DateOfLastEdit = new DateTime(2021, 12, 09)
+            };
+            var sourseProject = new Project();
 
-            Assert.AreEqual(expected, actual);
-        }
+            //Act
+            sourseProject.Notes.Add(note);
 
-        [Test]
-        public void Test_GetNotes()
-        {
-            var expected = new List<Note>();
-            var temp = expected;
-            var actual = temp;
-
-            Assert.AreEqual(expected, actual);
+            //Assert
+            Assert.IsNotNull(sourseProject);
         }
     }
 }
