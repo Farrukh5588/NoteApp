@@ -78,7 +78,7 @@ namespace NoteAppUI
                 _note.Name = NameTextBox.Text;
                 _note.NoteCategory = (NoteCategory)NoteCategoryComboBox.SelectedItem;
                 _note.DateOfCreation = CreatedTimePicker.Value;
-                _note.DateOfLastEdit = ModifiedTimePicker.Value;
+                _note.DateOfLastEdit = DateTime.Now;
                 _note.NoteText = TextBox.Text;
                 DialogResult = DialogResult.OK;
                 Close();
