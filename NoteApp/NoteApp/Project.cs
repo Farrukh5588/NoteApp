@@ -17,41 +17,37 @@ namespace NoteApp
         /// </summary>
         public List<Note> Notes { get; set; } = new List<Note>();
 
-		/// <summary>
-		/// Текущая заметка.
-		/// </summary>
-		private int _currentNote = -1;
+        /// <summary>
+        /// Текущая заметка.
+        /// </summary>
+        public int CurrentNote { get; set; }
 
-		/// <summary>
-		/// Функиця для сортировки списка заметок по дате изменения.
-		/// </summary>
-		public List<Note> SortNotes(List<Note> noteList = null)
-		{
-			var sortingList = noteList ?? Notes;
+        /// <summary>
+        /// Метод для сортировки списка заметок по времени последнего изменения.
+        /// </summary>
+        /// <returns></returns>
+        public List<Note> SortByModificationTime()
+        {
+            var sortedNotes =
+                Notes.OrderByDescending(note => note.DateOfLastEdit).ToList();
 
-			sortingList.Sort(delegate (Note x, Note y)
-			{
-				if (x.DateOfLastEdit == null && y.DateOfLastEdit == null) return 0;
-				else if (x.DateOfLastEdit == null) return 1;
-				else if (y.DateOfLastEdit == null) return -1;
-				else return y.DateOfLastEdit.CompareTo(x.DateOfLastEdit);
-			});
-			return sortingList;
-		}
+            return sortedNotes;
+        }
 
-		/// <summary>
-		/// Свойство текущей заметки.
-		/// </summary>
-		public int CurrentNote
-		{
-			get
-			{
-				return _currentNote;
-			}
-			set
-			{
-				_currentNote = value;
-			}
-		}
-	}
+        /// <summary>
+        /// Метод для сортировки списка заметок определенной категории по времени 
+        /// последнего изменения.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public List<Note> SortByModificationTimeAndCategory(NoteCategory category)
+        {
+            var sortedNotesCategory =
+                Notes.Where(note => note.NoteCategory == category).ToList();
+            var sortedNotes =
+                sortedNotesCategory.OrderByDescending(note => note.DateOfLastEdit).ToList();
+
+            return sortedNotes;
+        }
+    }
 }
